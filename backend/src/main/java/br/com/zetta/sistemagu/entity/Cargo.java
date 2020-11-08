@@ -1,5 +1,6 @@
 package br.com.zetta.sistemagu.entity;
 
+import br.com.zetta.sistemagu.dto.CargoDto;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
@@ -18,4 +19,10 @@ public class Cargo {
     @NotNull
     @Column(name = "nome", unique = true)
     private String nome;
+
+    public CargoDto toDto(){
+        CargoDto cargo = new CargoDto();
+        cargo.setNome(this.nome);
+        return cargo;
+    }
 }
