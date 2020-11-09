@@ -1,6 +1,6 @@
 package br.com.zetta.sistemagu.entity;
 
-import br.com.zetta.sistemagu.dto.CargoDto;
+import br.com.zetta.sistemagu.dto.PerfilDto;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
@@ -8,8 +8,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(schema = "sgu", name = "cargo")
-public class Cargo {
+@Table(schema = "sgu", name = "perfil")
+public class Perfil {
 
     @Id
     @Column(name = "id", updatable = false, nullable = false)
@@ -20,9 +20,13 @@ public class Cargo {
     @Column(name = "nome", unique = true)
     private String nome;
 
-    public CargoDto toDto() {
-        CargoDto cargo = new CargoDto();
-        cargo.setNome(this.nome);
-        return cargo;
+    @ManyToOne
+    private Usuario usuario;
+
+
+    public PerfilDto toDto() {
+        PerfilDto perfil = new PerfilDto();
+        perfil.setNome(this.nome);
+        return perfil;
     }
 }
