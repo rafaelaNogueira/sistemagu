@@ -1,5 +1,6 @@
 package br.com.zetta.sistemagu.entity;
 
+import br.com.zetta.sistemagu.dto.UsuarioDto;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
@@ -12,30 +13,11 @@ import java.util.List;
 @Entity
 @Data
 @Table(schema = "sgu", name = "usuario")
-public class Usuario{
+public class Usuario extends Pessoa{
 
     @OneToMany
     @Column(name = "perfis") //Isso está certo?
     private List<Perfil> perfis;
-
-    @Id
-    @Column(name = "id", updatable = false, nullable = false)
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
-
-    @NotNull
-    @Column(name = "nome", unique = true)
-    private String nome;
-
-    @NotNull
-    @Column(name = "cpf", unique = true)
-    private int cpf;
-
-    @Column(name = "dataNascimento")
-    private Date dataNascimento;
-
-    @Column(name = "sexo")
-    private char sexo;
 
     //@ManyToOne
     //@Column(name = "cargo")
@@ -45,11 +27,26 @@ public class Usuario{
     @Column(name = "dataCadastro")
     private Date dataCadastro;
 
-    /*
+    public List<Perfil> getPerfis() {
+        return perfis;
+    }
+
+    public void setPerfis(List<Perfil> perfis) {
+        this.perfis = perfis;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
     public UsuarioDto toDto() {
         UsuarioDto usuario = new UsuarioDto();
         usuario.setNome(this.nome);
-        return perfil;
+        return usuario;
     }
-     */
+
 }

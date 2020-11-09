@@ -8,4 +8,6 @@ import java.util.List;
 public interface PerfilRepository extends JpaRepository<Perfil,String> {
 
     List<Perfil> findAllByOrderByNome();
+
+    Object findById(int id);
 }

@@ -20,4 +20,16 @@ public class CargoService {
         List<CargoDto> cargosDto = cargos.stream().map(cargo -> cargo.toDto()).collect(Collectors.toList());
         return cargosDto;
     }
+
+    public List<CargoDto> editarCargo(CargoDto cargoDto) {
+
+        Cargo cargos = (Cargo) repository.findById(cargoDto.getId());
+
+        Cargo cargo = cargos;
+        
+        cargo.setNome(cargoDto.getNome());
+
+        repository.save(cargo);
+        return repository.findAll().stream().map(c -> c.toDto()).collect(Collectors.toList());
+    }
 }

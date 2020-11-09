@@ -9,4 +9,6 @@ public interface CargoRepository extends JpaRepository<Cargo,String>{
 
 
     List<Cargo> findAllByOrderByNome();
+
+    List<Cargo> findById(int id);
 }

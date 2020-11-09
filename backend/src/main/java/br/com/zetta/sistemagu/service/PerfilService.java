@@ -17,7 +17,30 @@ public class PerfilService {
 
     public List<PerfilDto> getAll(){
         List<Perfil> perfis = repository.findAll();
-        List<PerfilDto> perfisDto = perfis.stream().map(cargo -> cargo.toDto()).collect(Collectors.toList());
+        List<PerfilDto> perfisDto = perfis.stream().map(perfil -> perfil.toDto()).collect(Collectors.toList());
         return perfisDto;
+    }
+
+    public List<PerfilDto> editarPerfil(PerfilDto perfilDto) {
+
+        Perfil perfis = (Perfil) repository.findById(perfilDto.getId());
+
+        Perfil perfil = perfis;
+
+        perfil.setNome(perfilDto.getNome());
+
+        repository.save(perfil);
+        return repository.findAll().stream().map(p -> p.toDto()).collect(Collectors.toList());
+    }
+
+    public List<PerfilDto> removerPerfil(PerfilDto perfilDto) {
+
+        Perfil perfis = (Perfil) repository.findById(perfilDto.getId());
+
+        Perfil perfil = perfis;
+
+        repository.delete(perfil);
+        return repository.findAll().stream().map(p -> p.toDto()).collect(Collectors.toList());
+
     }
 }

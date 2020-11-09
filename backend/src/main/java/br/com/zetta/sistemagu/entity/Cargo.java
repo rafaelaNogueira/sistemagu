@@ -20,6 +20,22 @@ public class Cargo {
     @Column(name = "nome", unique = true)
     private String nome;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
     public CargoDto toDto() {
         CargoDto cargo = new CargoDto();
         cargo.setNome(this.nome);
