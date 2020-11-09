@@ -12,5 +12,3 @@ Front-end:
 
 - Abra pasta da aplicação;
 - Abra terminal e digite npm start.
-
-# sistemagu
